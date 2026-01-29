@@ -1,0 +1,67 @@
+name: corn_disease_detection
+description: "A new Flutter project."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  easy_localization: ^3.0.3
+  intl: ^0.20.2
+  image_picker: ^1.0.4
+  cupertino_icons: ^1.0.2
+  auto_size_text: ^3.0.0
+  sqflite: ^2.3.0
+  path: ^1.8.3
+  path_provider: ^2.1.1
+  tflite_flutter: ^0.11.0
+  image: ^4.1.3
+  pdf: ^3.10.4
+  open_file: ^3.3.2
+  shimmer: ^3.0.0
+  vector_graphics: ^1.1.9
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+  fonts:
+    - family: DejaVuSans
+      fonts:
+        - asset: assets/fonts/DejaVuSans.ttf
+  assets:
+    - assets/
+    - assets/translations/
+    - assets/translations/en.json
+    - assets/translations/tl.json
+    - assets/translations/ceb.json
+    - assets/images/
+    - assets/models/best_int8_2.tflite
+    - assets/images/Logo.png
+    - assets/images/Usericon.png
+    - assets/images/FarmImage.png
+    - assets/images/search.png
+    - assets/images/Home.png
+    - assets/images/ScanNavBar.png
+    - assets/images/DiagnosIcon.png
+    - assets/images/CommonRust.png
+    - assets/images/rustImage.png
+    - assets/images/phaeosphaeriaImage.png
+    - assets/images/northern_leaf_blightImage.png
+    - assets/images/
+    - assets/models/
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon/Logo.png"
+  min_sdk_android: 21
