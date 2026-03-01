@@ -4,7 +4,6 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'utils/custom_material_localizations.dart';
-import 'Pages/welcomingPage.dart';
 import 'Pages/Dashboard.dart';
 import 'Pages/Scan.dart';
 import 'Pages/Diagnoses.dart';
@@ -37,7 +36,7 @@ void main() async {
         Locale('tl'),
         Locale('ceb'),
       ],
-      path: 'assets/translations',
+      path: 'Assets/translations',
       fallbackLocale: const Locale('en'),
       useOnlyLangCode: true,
       useFallbackTranslations: true,
@@ -124,7 +123,7 @@ class _MyAppState extends State<MyApp> {
         }
         return const Locale('en');
       },
-      title: 'Corn Disease Detection',
+      title: 'VisionCare',
       theme: ThemeData(
         primarySwatch: Colors.green,
         visualDensity: VisualDensity.adaptivePlatformDensity,

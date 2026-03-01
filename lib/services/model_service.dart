@@ -1,6 +1,4 @@
 import 'dart:io';
-import 'dart:typed_data';
-import 'package:flutter/material.dart';
 import 'package:image/image.dart' as img;
 import 'package:tflite_flutter/tflite_flutter.dart';
 import 'package:path_provider/path_provider.dart';
@@ -8,7 +6,7 @@ import 'package:flutter/services.dart';
 
 class ModelService {
   // Make sure this path exactly matches your assets configuration in pubspec.yaml
-  static const String modelPath = 'assets/models/best_int8_2.tflite';
+  static const String modelPath = 'Assets/models/best_int8_2.tflite';
   static const int inputSize = 640; // YOLOv8 typically uses 640x640
 
   late Interpreter _interpreter;
@@ -59,7 +57,7 @@ class ModelService {
         try {
           print("Attempting to load model from file...");
           final interpreterOptions = InterpreterOptions()..threads = 2;
-          _interpreter = await Interpreter.fromFile(modelFile,
+          _interpreter = Interpreter.fromFile(modelFile,
               options: interpreterOptions);
           _isInitialized = true;
           print("Model loaded from file successfully");
@@ -137,7 +135,7 @@ class ModelService {
       }
 
       // Reshape according to input shape
-      var inputData;
+      List<dynamic> inputData;
       if (inputShape.length == 4) {
         // For [1, height, width, 3] format
         inputData = [
@@ -149,11 +147,10 @@ class ModelService {
       }
 
       // Create output buffer with the correct shape
-      var outputBuffer;
+      List<dynamic> outputBuffer;
       if (outputShape.length == 2) {
         // For [1, 4] format
-        outputBuffer = List.generate(
-            outputShape[0], (_) => List<double>.filled(outputShape[1], 0.0));
+        outputBuffer = [List<double>.filled(outputShape[1], 0.0)];
       } else {
         outputBuffer =
             List<double>.filled(outputShape.reduce((a, b) => a * b), 0.0);
@@ -181,18 +178,20 @@ class ModelService {
 
       if (outputShape.length == 2) {
         // For [1, 4] format
-        maxVal = outputBuffer[0][0];
+        maxVal = (outputBuffer[0][0] as num).toDouble();
         for (int i = 1; i < outputShape[1]; i++) {
-          if (outputBuffer[0][i] > maxVal) {
-            maxVal = outputBuffer[0][i];
+          double val = (outputBuffer[0][i] as num).toDouble();
+          if (val > maxVal) {
+            maxVal = val;
             maxIdx = i;
           }
         }
       } else {
-        maxVal = outputBuffer[0];
+        maxVal = (outputBuffer[0] as num).toDouble();
         for (int i = 1; i < outputBuffer.length; i++) {
-          if (outputBuffer[i] > maxVal) {
-            maxVal = outputBuffer[i];
+          double val = (outputBuffer[i] as num).toDouble();
+          if (val > maxVal) {
+            maxVal = val;
             maxIdx = i;
           }
         }

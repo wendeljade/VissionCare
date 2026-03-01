@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:intl/intl.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:path_provider/path_provider.dart';
 import 'dart:io';
-import 'dart:math' show pi, cos, sin;
 import '../database/database_helper.dart';
 import 'package:open_file/open_file.dart';
 import '../utils/date_format_utils.dart';
@@ -65,7 +63,7 @@ class _ExportReportState extends State<ExportReport> {
     // Add header row
     rows.add(
       pw.TableRow(
-        decoration: pw.BoxDecoration(
+        decoration: const pw.BoxDecoration(
           color: PdfColors.grey300,
         ),
         children: [
@@ -134,10 +132,10 @@ class _ExportReportState extends State<ExportReport> {
     return pw.Table(
       border: pw.TableBorder.all(color: PdfColors.black),
       columnWidths: {
-        0: pw.FlexColumnWidth(2), // Disease
-        1: pw.FlexColumnWidth(1), // Count
-        2: pw.FlexColumnWidth(1), // Percentage
-        3: pw.FlexColumnWidth(3), // Distribution bar
+        0: const pw.FlexColumnWidth(2), // Disease
+        1: const pw.FlexColumnWidth(1), // Count
+        2: const pw.FlexColumnWidth(1), // Percentage
+        3: const pw.FlexColumnWidth(3), // Distribution bar
       },
       children: rows,
     );
@@ -225,7 +223,7 @@ class _ExportReportState extends State<ExportReport> {
     // Add header row
     rows.add(
       pw.TableRow(
-        decoration: pw.BoxDecoration(
+        decoration: const pw.BoxDecoration(
           color: PdfColors.grey300,
         ),
         children: [
@@ -344,7 +342,7 @@ class _ExportReportState extends State<ExportReport> {
                     ),
                     pw.Text(
                       DateFormatUtils.formatDate(DateTime.now(), currentLocale, 'MMM d, yyyy'),
-                      style: pw.TextStyle(
+                      style: const pw.TextStyle(
                         fontSize: 12,
                         color: PdfColors.grey700,
                       ),
@@ -355,9 +353,9 @@ class _ExportReportState extends State<ExportReport> {
               pw.SizedBox(height: 20),
               pw.Container(
                 padding: const pw.EdgeInsets.all(10),
-                decoration: pw.BoxDecoration(
+                decoration: const pw.BoxDecoration(
                   color: PdfColors.grey100,
-                  borderRadius: const pw.BorderRadius.all(pw.Radius.circular(5)),
+                  borderRadius: pw.BorderRadius.all(pw.Radius.circular(5)),
                 ),
                 child: pw.Row(
                   children: [
@@ -413,13 +411,13 @@ class _ExportReportState extends State<ExportReport> {
               pw.Table(
                 border: pw.TableBorder.all(color: PdfColors.black),
                 columnWidths: {
-                  0: pw.FlexColumnWidth(2), // Date & Time
-                  1: pw.FlexColumnWidth(1.5), // Disease
+                  0: const pw.FlexColumnWidth(2), // Date & Time
+                  1: const pw.FlexColumnWidth(1.5), // Disease
                 },
                 children: [
                   // Header
                   pw.TableRow(
-                    decoration: pw.BoxDecoration(
+                    decoration: const pw.BoxDecoration(
                       color: PdfColors.grey300,
                     ),
                     children: [
@@ -492,23 +490,23 @@ class _ExportReportState extends State<ExportReport> {
           context: context,
           builder: (BuildContext context) {
             return AlertDialog(
-              title: Text('Report Exported Successfully'),
+              title: const Text('Report Exported Successfully'),
               content: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('File saved as:'),
-                  SizedBox(height: 8),
+                  const Text('File saved as:'),
+                  const SizedBox(height: 8),
                   Text(
                     fileName,
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(height: 8),
-                  Text('Location:'),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
+                  const Text('Location:'),
+                  const SizedBox(height: 8),
                   Text(
                     output?.path ?? 'Unknown',
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
@@ -518,13 +516,13 @@ class _ExportReportState extends State<ExportReport> {
                     _openExportedFile();
                     Navigator.of(context).pop();
                   },
-                  child: Text('Open'),
+                  child: const Text('Open'),
                 ),
                 TextButton(
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
-                  child: Text('Close'),
+                  child: const Text('Close'),
                 ),
               ],
             );
@@ -553,8 +551,8 @@ class _ExportReportState extends State<ExportReport> {
       appBar: AppBar(
         title: Text('export_report'.tr()),
         backgroundColor: Colors.green,
-        actions: [
-          const LanguageSelector(),
+        actions: const [
+          LanguageSelector(),
         ],
       ),
       body: SingleChildScrollView(
@@ -642,7 +640,7 @@ class _ExportReportState extends State<ExportReport> {
                 child: ElevatedButton.icon(
                   onPressed: _openExportedFile,
                   icon: const Icon(Icons.file_open),
-                  label: Text('Open Last Exported Report'),
+                  label: const Text('Open Last Exported Report'),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,
                     foregroundColor: Colors.white,

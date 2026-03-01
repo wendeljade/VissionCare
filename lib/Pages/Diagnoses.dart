@@ -211,6 +211,23 @@ class _DiagnosesState extends State<Diagnoses> {
             itemCount: filteredDiagnoses.length,
             itemBuilder: (context, index) {
               final diagnosis = filteredDiagnoses[index];
+              
+              // Extract confidence value
+              final double confidence = diagnosis['confidence'] != null 
+                  ? (diagnosis['confidence'] as num).toDouble() 
+                  : 0.0;
+              
+              // Determine display label based on thresholds
+              String displayLabel;
+              int confidencePercent = (confidence * 100).toInt();
+              if (confidencePercent < 35) {
+                displayLabel = 'No Diabetic Retinopathy';
+              } else if (confidencePercent >= 35 && confidencePercent <= 69) {
+                displayLabel = 'Mild Diabetic Retinopathy';
+              } else {
+                displayLabel = 'Severe Diabetic Retinopathy';
+              }
+
               return Container(
                 margin: EdgeInsets.only(bottom: width * 0.04),
                 decoration: BoxDecoration(
@@ -221,7 +238,7 @@ class _DiagnosesState extends State<Diagnoses> {
                       color: Colors.black.withOpacity(0.2),
                       blurRadius: 8.0,
                       spreadRadius: 1.0,
-                      offset: Offset(0, 4),
+                      offset: const Offset(0, 4),
                     ),
                   ],
                 ),
@@ -288,7 +305,7 @@ class _DiagnosesState extends State<Diagnoses> {
                                       ),
                                       child: Text(
                                         'cancel'.tr(),
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontSize: 16,
                                           fontWeight: FontWeight.w500,
                                         ),
@@ -302,14 +319,14 @@ class _DiagnosesState extends State<Diagnoses> {
                                       style: ElevatedButton.styleFrom(
                                         backgroundColor: Colors.green,
                                         foregroundColor: Colors.white,
-                                        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                                        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                                         shape: RoundedRectangleBorder(
                                           borderRadius: BorderRadius.circular(8),
                                         ),
                                       ),
                                       child: Text(
                                         'delete'.tr(),
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontSize: 16,
                                           fontWeight: FontWeight.w500,
                                         ),
@@ -333,7 +350,7 @@ class _DiagnosesState extends State<Diagnoses> {
                           topLeft: Radius.circular(width * 0.04),
                           topRight: Radius.circular(width * 0.04),
                         ),
-                        child: Container(
+                        child: SizedBox(
                           height: width * 0.5,
                           child: diagnosis['imagePath'] != null &&
                                   diagnosis['imagePath'].isNotEmpty
@@ -370,7 +387,7 @@ class _DiagnosesState extends State<Diagnoses> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              diagnosis['disease'] ?? 'Unknown Disease',
+                              displayLabel, // Use the categorized label
                               style: TextStyle(
                                 fontSize: width * 0.045,
                                 fontWeight: FontWeight.bold,
@@ -429,7 +446,8 @@ class _DiagnosesState extends State<Diagnoses> {
         }
       },
       elevation: 10,
-      selectedItemColor: const Color.fromARGB(255, 0, 0, 0),
+      backgroundColor: const Color(0xFF001529),
+      selectedItemColor: const Color(0xFF5ED3F2),
       unselectedItemColor: Colors.grey,
       type: BottomNavigationBarType.fixed,
       selectedFontSize: width * 0.025,
@@ -447,7 +465,7 @@ class _DiagnosesState extends State<Diagnoses> {
       String iconName, String label, double width) {
     return BottomNavigationBarItem(
       icon: Image.asset(
-        'assets/images/$iconName.png',
+        'Assets/images/$iconName.png',
         height: width * 0.05,
         width: width * 0.05,
       ),
@@ -459,7 +477,7 @@ class _DiagnosesState extends State<Diagnoses> {
         ),
         padding: EdgeInsets.all(width * 0.02),
         child: Image.asset(
-          'assets/images/$iconName.png',
+          'Assets/images/$iconName.png',
           height: width * 0.05,
           width: width * 0.05,
         ),
@@ -472,15 +490,19 @@ class _DiagnosesState extends State<Diagnoses> {
     final width = MediaQuery.of(context).size.width;
     
     return Scaffold(
-      backgroundColor: const Color(0xFFF8EFE8),
+      backgroundColor: const Color(0xFF001529),
       appBar: AppBar(
-        title: Text('recent_results'.tr()),
-        backgroundColor: Colors.green,
+        title: Text(
+          'recent_results'.tr(),
+          style: const TextStyle(color: Colors.white),
+        ),
+        backgroundColor: const Color(0xFF001529),
+        elevation: 0,
         automaticallyImplyLeading: false,
         actions: [
           const LanguageSelector(),
           IconButton(
-            icon: const Icon(Icons.download),
+            icon: const Icon(Icons.download, color: Colors.white),
             onPressed: () {
               Navigator.push(
                 context,

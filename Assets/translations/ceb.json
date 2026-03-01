@@ -20,8 +20,8 @@
 
   "about_cdd": "Mahitungod sa CDD",
   "empowering_farmers": "Pagpalig-on sa mga Mag-uuma\npinaagi sa Teknolohiya sa AI",
-  "what_is_cdd": "Unsa ang CDD?",
-  "cdd_description": "Ang Corn Disease Detection (CDD) usa ka bag-ong aplikasyon nga gipaandar sa AI nga gidesinyo aron pagtabang sa mga mag-uuma sa pag-ila ug pagdumala sa mga sakit sa mais. Ang among misyon mao ang pagpalambo sa pagmonitor sa kahimsog sa tanom ug pagpalambo sa produktibidad sa agrikultura.",
+  "Corn_Disease_Detection": "VisionCare",
+  "cdd_description": "Ang VisionCare usa ka bag-ong aplikasyon nga gipaandar sa AI nga gidesinyo aron pagtabang sa mga mag-uuma sa pag-ila ug pagdumala sa mga sakit sa mais. Ang among misyon mao ang pagpalambo sa pagmonitor sa kahimsog sa tanom ug pagpalambo sa produktibidad sa agrikultura.",
   "key_features": "Importante nga mga Bahin",
   "real_time_detection": "Real-time nga Pagtino",
   "real_time_description": "Dayon nga pagsusi sa mga dahon sa mais gamit ang imong camera",
@@ -48,6 +48,7 @@
   "disease_description": "Paghulagway sa Sakit:",
   "common_rust_full_description": "Ang Common rust sa mais, nga ginahinungdan sa Puccinia sorghi, makita isip mga pula-brown nga pustula sa mga dahon. Kini makadaot sa photosynthesis ug makapakunhod sa ani, ilabina kung bugnaw ug basa ang klima. Mapugngan kini pinaagi sa paggamit og lig-on o resistente nga mga variety, pagpuli-puli og tanom (crop rotation), pagsiguro nga sakto ang gilay-on sa matag tanom, ug kanunay nga pagmonitor sa sayo nga mga timailhan sa sakit. Ang paggamit sa fungicide makatabang kung sayo kini gamiton, ug ang pagkuha o pagsunog sa mga salin sa tanom nga naimpeksyon human sa ani makatabang sa pagpakunhod sa risgo sa umaabot.",
   "result": "Resulta",
+  "patient_information": "Impormasyon sa Pasyente",
   "common_rust_description": "Ang Common rust sa mais, nga ginahinungdan sa Puccinia sorghi, makita isip mga pula-brown nga pustula sa mga dahon. Kini makadaot sa photosynthesis ug makapakunhod sa ani, ilabina kung bugnaw ug basa ang klima. Mapugngan kini pinaagi sa paggamit og lig-on o resistente nga mga variety, pagpuli-puli og tanom (crop rotation), pagsiguro nga sakto ang gilay-on sa matag tanom, ug kanunay nga pagmonitor sa sayo nga mga timailhan sa sakit. Ang paggamit sa fungicide makatabang kung sayo kini gamiton, ug ang pagkuha o pagsunog sa mga salin sa tanom nga naimpeksyon human sa ani makatabang sa pagpakunhod sa risgo sa umaabot.",
   "disease_prevention": "Mga Pamaagi sa Pagpugong:",
   "resistant_varieties_title": "1. Pagpili og Lig-on nga mga Variety:",

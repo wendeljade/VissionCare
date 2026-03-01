@@ -31,37 +31,38 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
+  flutter_launcher_icons: ^0.13.1
 
 flutter:
   uses-material-design: true
   fonts:
     - family: DejaVuSans
       fonts:
-        - asset: assets/fonts/DejaVuSans.ttf
+        - asset: Assets/fonts/DejaVuSans.ttf
   assets:
-    - assets/
-    - assets/translations/
-    - assets/translations/en.json
-    - assets/translations/tl.json
-    - assets/translations/ceb.json
-    - assets/images/
-    - assets/models/best_int8_2.tflite
-    - assets/images/Logo.png
-    - assets/images/Usericon.png
-    - assets/images/FarmImage.png
-    - assets/images/search.png
-    - assets/images/Home.png
-    - assets/images/ScanNavBar.png
-    - assets/images/DiagnosIcon.png
-    - assets/images/CommonRust.png
-    - assets/images/rustImage.png
-    - assets/images/phaeosphaeriaImage.png
-    - assets/images/northern_leaf_blightImage.png
-    - assets/images/
-    - assets/models/
+    - Assets/
+    - Assets/translations/
+    - Assets/translations/en.json
+    - Assets/translations/tl.json
+    - Assets/translations/ceb.json
+    - Assets/images/
+    - Assets/models/best_int8_2.tflite
+    - Assets/images/Logo.png
+    - Assets/images/Usericon.png
+    - Assets/images/FarmImage.png
+    - Assets/images/search.png
+    - Assets/images/Home.png
+    - Assets/images/ScanNavBar.png
+    - Assets/images/DiagnosIcon.png
+    - Assets/images/CommonRust.png
+    - Assets/images/rustImage.png
+    - Assets/images/phaeosphaeriaImage.png
+    - Assets/images/northern_leaf_blightImage.png
+    - Assets/images/
+    - Assets/models/
 
 flutter_launcher_icons:
   android: true
   ios: true
-  image_path: "assets/icon/Logo.png"
+  image_path: "Assets/icon/Logo.png"
   min_sdk_android: 21

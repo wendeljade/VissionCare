@@ -4,13 +4,14 @@ import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import './Dashboard.dart';
 import './Results.dart';
-import './Diagnoses.dart';
 import '../database/database_helper.dart';
 import '../services/model_service.dart';
 import '../widgets/language_selector.dart';
 
 class Scan extends StatefulWidget {
-  const Scan({super.key});
+  final String? patientName;
+  final String? patientId;
+  const Scan({super.key, this.patientName, this.patientId});
 
   @override
   State<Scan> createState() => _ScanState();
@@ -65,6 +66,8 @@ class _ScanState extends State<Scan> {
               date: DateTime.now().toIso8601String(),
               imagePath: imagePath,
               confidence: confidence,
+              patientName: widget.patientName,
+              patientId: widget.patientId,
             ),
           ),
         );
@@ -77,7 +80,7 @@ class _ScanState extends State<Scan> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text('Failed to process image: $e'),
-            duration: Duration(seconds: 10),
+            duration: const Duration(seconds: 10),
             action: SnackBarAction(
               label: 'OK',
               onPressed: () {},
@@ -149,50 +152,34 @@ class _ScanState extends State<Scan> {
     return Scaffold(
       extendBody: true,
       extendBodyBehindAppBar: true,
-      body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              Color.fromARGB(255, 180, 235, 245), // very light blue
-              Color(0xFFBEE9F7),                  // light sky blue
-              Color(0xFF90DBF4),                  // soft blue
-              Color(0xFF48CAE4),                  // light blue
-              Color(0xFF00B4D8),                  // cyan blue
-              Color(0xFF0096C7),                  // medium blue
-              Color(0xFF0077B6),                  // strong blue
-              Color(0xFF023E8A),                  // deep blue
-              Color(0xFF03045E),                  // dark navy
-              Color(0xFF020024),                  // very dark blue
-            ],
-          ),
-        ),
-        child: SafeArea(
-          child: Column(
-            children: [
-              // AppBar
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    IconButton(
-                      icon: const Icon(Icons.arrow_back, color: Colors.white),
-                      onPressed: () => Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const Dashboard()),
-                      ),
+      backgroundColor: const Color(0xFF001529),
+      body: SafeArea(
+        child: Column(
+          children: [
+            // AppBar
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  IconButton(
+                    icon: const Icon(Icons.arrow_back, color: Colors.white),
+                    onPressed: () => Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const Dashboard()),
                     ),
-                    const LanguageSelector(), // Add language selector here
-                  ],
-                ),
+                  ),
+                  const LanguageSelector(), // Add language selector here
+                ],
               ),
+            ),
 
-              // Main Content
-              Expanded(
-                child: Padding(
+            // Main Content
+            Expanded(
+              child: _isProcessing 
+                ? const Center(child: CircularProgressIndicator(color: Color(0xFF5ED3F2)))
+                : Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -202,7 +189,7 @@ class _ScanState extends State<Scan> {
                         alignment: Alignment.center,
                         margin: const EdgeInsets.only(top: 40, bottom: 40),
                         child: Image.asset(
-                          'assets/images/Logo.png',
+                          'Assets/images/Logo.png',
                           width: 280,
                           height: 280,
                         ),
@@ -224,11 +211,11 @@ class _ScanState extends State<Scan> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Icon(Icons.photo_library, color: Colors.black),
-                              SizedBox(width: 8),
+                              const Icon(Icons.photo_library, color: Colors.black),
+                              const SizedBox(width: 8),
                               Text(
                                 'pick_from_gallery'.tr(),
-                                style: TextStyle(
+                                style: const TextStyle(
                                   color: Colors.black,
                                   fontSize: 16,
                                 ),
@@ -254,11 +241,11 @@ class _ScanState extends State<Scan> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Icon(Icons.camera_alt, color: Colors.black),
-                              SizedBox(width: 8),
+                              const Icon(Icons.camera_alt, color: Colors.black),
+                              const SizedBox(width: 8),
                               Text(
                                 'take_photo'.tr(),
-                                style: TextStyle(
+                                style: const TextStyle(
                                   color: Colors.black,
                                   fontSize: 16,
                                 ),
@@ -270,11 +257,11 @@ class _ScanState extends State<Scan> {
                     ],
                   ),
                 ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
   }
 }
+

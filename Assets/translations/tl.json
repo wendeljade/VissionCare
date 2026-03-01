@@ -1,7 +1,7 @@
 {
-  "Corn_Disease_Detection": "Pagtukoy ng Sakit ng Mais",
+  "Corn_Disease_Detection": "Pagtukoy ng Sakit ng Mata",
   "welcome": "Maligayang pagdating",
-  "learn_how_cdd_helps": "Alamin kung paano tumutulong ang CDD sa mga magsasaka",
+  "learn_how_cdd_helps": "Alamin kung paano tumutulong ang VisionCare sa mga taong may Diabetis",
   "know_maize_diseases": "Alamin ang mga sakit ng mais sa isang scan lamang",
   "scan_now": "I-scan Ngayon",
   "recent_diagnoses": "Mga Kamakailang Pagsusuri",
@@ -20,8 +20,8 @@
 
   "about_cdd": "Tungkol sa CDD",
   "empowering_farmers": "Pagpapalakas ng mga Magsasaka\nsa pamamagitan ng Teknolohiyang AI",
-  "what_is_cdd": "Ano ang CDD?",
-  "cdd_description": "Ang Corn Disease Detection (CDD) ay isang makabagong aplikasyong pinapagana ng AI na dinisenyo upang tulungan ang mga magsasaka na matukoy at mapamahalaan ang mga sakit ng mais. Ang aming misyon ay mapahusay ang pagsubaybay sa kalusugan ng pananim at mapabuti ang produktibidad ng agrikultura.",
+  "Corn_Disease_Detection": "VisionCare",
+  "cdd_description": "Ang VisionCare ay isang makabagong aplikasyong pinapagana ng AI na dinisenyo upang tulungan ang mga magsasaka na matukoy at mapamahalaan ang mga sakit ng mais. Ang aming misyon ay mapahusay ang pagsubaybay sa kalusugan ng pananim at mapabuti ang produktibidad ng agrikultura.",
   "key_features": "Mga Pangunahing Tampok",
   "real_time_detection": "Real-time na Pagtukoy",
   "real_time_description": "Agarang pagsusuri ng mga dahon ng mais gamit ang iyong camera",
@@ -48,6 +48,7 @@
   "disease_description": "Paglalarawan ng Sakit:",
   "common_rust_full_description": "Ang karaniwang kalawang sa mais, na sanhi ng Puccinia sorghi, ay lumalabas bilang pulang-kayumangging pustula sa mga dahon, nakakaapekto sa photosynthesis at ani, lalo na sa malamig at maalinsangang klima. Maiwasan ito sa pamamagitan ng paggamit ng matitibay na varieties, pag-rotate ng mga pananim, pagtiyak ng tamang pagitan ng mga halaman, at pagsubaybay sa maagang mga palatandaan. Ang mga fungicide ay makakatulong kung agad na gagamitin, at ang pag-alis ng mga nahawaang labi pagkatapos ng ani ay nagpapababa ng panganib sa hinaharap.",
   "result": "Resulta",
+  "patient_information": "Impormasyon ng Pasyente",
   "disease_prevention": "Mga Tip sa Pag-iwas:",
   "resistant_varieties_title": "1. Pumili ng Matitibay na Uri:",
   "resistant_varieties_desc": "Gumamit ng mga uri ng mais na lumalaban sa kalawang upang mabawasan ang panganib ng malubhang impeksyon at mapalakas ang natural na depensa ng halaman.",

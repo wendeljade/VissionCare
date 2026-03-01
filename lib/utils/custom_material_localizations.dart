@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:intl/intl.dart' as intl;
 
 // Custom delegate that extends the default one but adds support for 'ceb' locale
 class CustomMaterialLocalizations extends LocalizationsDelegate<MaterialLocalizations> {

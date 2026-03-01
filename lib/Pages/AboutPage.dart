@@ -25,8 +25,8 @@ class AboutPage extends StatelessWidget {
           icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () => Navigator.pop(context),
         ),
-        actions: [
-          const LanguageSelector(),
+        actions: const [
+          LanguageSelector(),
         ],
         title: AutoSizeText(
           'about_cdd'.tr(),
@@ -65,7 +65,7 @@ class AboutPage extends StatelessWidget {
                   child: Stack(
                     children: [
                       Image.asset(
-                        'assets/images/FarmImage.png',
+                        'Assets/images/FarmImage.png',
                         fit: BoxFit.cover,
                         width: double.infinity,
                         height: double.infinity,
@@ -125,7 +125,7 @@ class AboutPage extends StatelessWidget {
                     style: TextStyle(
                       fontSize: subtitleSize,
                       fontWeight: FontWeight.bold,
-                      color: Color(0xFF14919B),
+                      color: const Color(0xFF14919B),
                     ),
                   ),
                   SizedBox(height: screenSize.height * 0.02),
@@ -134,7 +134,7 @@ class AboutPage extends StatelessWidget {
                     style: TextStyle(
                       fontSize: bodySize,
                       height: 1.6,
-                      color: Color(0xFF333333),
+                      color: const Color(0xFF333333),
                     ),
                     minFontSize: 12,
                     maxLines: 10,
@@ -166,7 +166,7 @@ class AboutPage extends StatelessWidget {
                     style: TextStyle(
                       fontSize: subtitleSize,
                       fontWeight: FontWeight.bold,
-                      color: Color(0xFF14919B),
+                      color: const Color(0xFF14919B),
                     ),
                   ),
                   SizedBox(height: screenSize.height * 0.02),
@@ -221,7 +221,7 @@ class AboutPage extends StatelessWidget {
                     style: TextStyle(
                       fontSize: subtitleSize,
                       fontWeight: FontWeight.bold,
-                      color: Color(0xFF14919B),
+                      color: const Color(0xFF14919B),
                     ),
                   ),
                   SizedBox(height: screenSize.height * 0.02),
@@ -275,7 +275,7 @@ class AboutPage extends StatelessWidget {
                   style: TextStyle(
                     fontSize: featureTitleSize,
                     fontWeight: FontWeight.bold,
-                    color: Color(0xFF333333),
+                    color: const Color(0xFF333333),
                   ),
                   maxLines: 2,
                   minFontSize: 12,
@@ -318,7 +318,7 @@ class AboutPage extends StatelessWidget {
               child: Text(
                 number,
                 style: TextStyle(
-                  color: Color(0xFF45DFB1),
+                  color: const Color(0xFF45DFB1),
                   fontWeight: FontWeight.bold,
                   fontSize: stepTextSize,
                 ),
@@ -331,7 +331,7 @@ class AboutPage extends StatelessWidget {
               description,
               style: TextStyle(
                 fontSize: stepTextSize,
-                color: Color(0xFF333333),
+                color: const Color(0xFF333333),
                 height: 1.5,
               ),
               maxLines: 3,

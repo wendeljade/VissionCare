@@ -5,6 +5,7 @@ import './Scan.dart';
 import './Results.dart';
 import './Diagnoses.dart';
 import './AboutPage.dart';
+import './PatientDetails.dart';
 import '../database/database_helper.dart';
 import 'dart:io';
 import '../widgets/language_selector.dart';
@@ -38,7 +39,7 @@ class _DashboardState extends State<Dashboard> {
     final diagnosesHeight = height * 0.3; // 30% of available height
 
     return Scaffold(
-      backgroundColor: const Color(0xFFF8EFE8), // Background color
+      backgroundColor: const Color(0xFF001529), // Dark background color to match the new design
       body: SingleChildScrollView(
         // Wrap the body in a SingleChildScrollView
         child: Padding(
@@ -67,7 +68,7 @@ class _DashboardState extends State<Dashboard> {
                           ),
                           child: Center(
                             child: Image.asset(
-                              'assets/images/Usericon.png',
+                              'Assets/images/Usericon.png',
                               height: width * 0.06,
                               width: width * 0.06,
                               fit: BoxFit.contain,
@@ -106,7 +107,7 @@ class _DashboardState extends State<Dashboard> {
                           style: TextStyle(
                             fontSize: width * 0.045,
                             fontWeight: FontWeight.bold,
-                            color: Colors.black,
+                            color: Colors.white,
                           ),
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -145,43 +146,12 @@ class _DashboardState extends State<Dashboard> {
                     child: Stack(
                       fit: StackFit.expand, // Ensures stack fills the container
                       children: [
-                        Container(
+                        SizedBox(
                           width: double.infinity,
                           height: double.infinity,
                           child: Image.asset(
-                            'assets/images/FarmImage.png',
+                            'Assets/images/DashboardBanner.png',
                             fit: BoxFit.cover,
-                          ),
-                        ),
-                        Positioned(
-                          bottom: 0,
-                          left: 0,
-                          right: 0,
-                          child: Container(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: width * 0.04,
-                              vertical: width * 0.03,
-                            ),
-                            decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                begin: Alignment.topCenter,
-                                end: Alignment.bottomCenter,
-                                colors: [
-                                  Colors.transparent,
-                                  Colors.black.withOpacity(0.7),
-                                ],
-                              ),
-                            ),
-                            child: AutoSizeText(
-                              'learn_how_cdd_helps'.tr(),
-                              style: TextStyle(
-                                fontSize: width * 0.035,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.white,
-                              ),
-                              minFontSize: 10,
-                              maxLines: 2,
-                            ),
                           ),
                         ),
                       ],
@@ -190,91 +160,55 @@ class _DashboardState extends State<Dashboard> {
                 ),
               ),
 
-              SizedBox(height: height * 0.02),
+              SizedBox(height: height * 0.04),
 
-              // Scan Container with Shadow Design
-              Container(
-                height: scanContainerHeight,
-                width: containerWidth,
-                decoration: BoxDecoration(
-                  color: const Color(0xFFFFFFFF),
-                  borderRadius: BorderRadius.circular(width * 0.04),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.2),
-                      blurRadius: 8.0,
-                      spreadRadius: 1.0,
-                      offset: const Offset(0, 4),
-                    ),
-                  ],
-                ),
-                child: Padding(
-                  padding: EdgeInsets.all(width * 0.04),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          Image.asset(
-                            'assets/images/scan.png',
-                            height: width * 0.05,
-                            width: width * 0.05,
-                          ),
-                          SizedBox(width: width * 0.02),
-                          Expanded(
-                            child: Text(
-                              'know_maize_diseases'.tr(),
-                              style: TextStyle(fontSize: width * 0.035),
-                            ),
-                          ),
-                        ],
+              // New Scan Button Design to match Screenshot
+              Center(
+                child: SizedBox(
+                  width: containerWidth,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => const PatientDetails()),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.black,
+                      backgroundColor: const Color(0xFF5ED3F2), // Light blue color from screenshot
+                      padding: EdgeInsets.symmetric(vertical: height * 0.02),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(width * 0.1), // More rounded pill shape
                       ),
-                      SizedBox(
-                        width: double.infinity,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(builder: (context) => const Scan()),
-                            );
-                          },
-                          style: ElevatedButton.styleFrom(
-                            foregroundColor: Colors.black,
-                            backgroundColor: Colors.white,
-                            padding: EdgeInsets.symmetric(vertical: height * 0.015),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(width * 0.04),
-                              side: BorderSide(
-                                color: Colors.black.withOpacity(0.1),
-                                width: 1.0,
-                              ),
-                            ),
-                            elevation: 0, // Remove elevation to keep flat design with stroke
-                          ),
-                          child: Text(
-                            'scan_now'.tr(),
-                            style: TextStyle(
-                              fontSize: width * 0.035,
-                              fontWeight: FontWeight.w500,
-                            ),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.add_a_photo_outlined, size: width * 0.06),
+                        SizedBox(width: width * 0.02),
+                        Text(
+                          'scan_now'.tr(),
+                          style: TextStyle(
+                            fontSize: width * 0.045,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
 
-              SizedBox(height: height * 0.02),
+              SizedBox(height: height * 0.04),
 
-              // Recent Diagnoses Section with Shadow Design
+              // Recent Diagnoses Section
               Row(
                 children: [
                   Image.asset(
-                    'assets/images/search.png',
+                    'Assets/images/search.png',
                     height: width * 0.04,
                     width: width * 0.04,
+                    color: Colors.white, // Tint white for dark theme
                   ),
                   SizedBox(width: width * 0.02),
                   Expanded(
@@ -283,6 +217,7 @@ class _DashboardState extends State<Dashboard> {
                       style: TextStyle(
                         fontSize: width * 0.045,
                         fontWeight: FontWeight.bold,
+                        color: Colors.white,
                       ),
                       minFontSize: 12,
                       maxLines: 1,
@@ -315,10 +250,28 @@ class _DashboardState extends State<Dashboard> {
                         if (!snapshot.hasData) return Container();
                         return Column(
                           children: snapshot.data!.map((diagnosis) {
+                            // Extract confidence value
+                            final double confidence = diagnosis['confidence'] != null 
+                                ? (diagnosis['confidence'] as num).toDouble() 
+                                : 0.0;
+                            
+                            // Determine display label based on thresholds
+                            String displayLabel;
+                            int confidencePercent = (confidence * 100).toInt();
+                            if (confidencePercent < 35) {
+                              displayLabel = 'No Diabetic Retinopathy';
+                            } else if (confidencePercent >= 35 && confidencePercent <= 69) {
+                              displayLabel = 'Mild Diabetic Retinopathy';
+                            } else {
+                              displayLabel = 'Severe Diabetic Retinopathy';
+                            }
+
                             return _buildDiagnosisItem(
-                              diagnosis['disease'],
+                              displayLabel, // Use displayLabel instead of raw disease
                               diagnosis['date'],
                               width,
+                              rawDisease: diagnosis['disease'], // Pass raw disease for DB lookups
+                              confidence: confidence, // Pass confidence
                             );
                           }).toList(),
                         );
@@ -335,29 +288,28 @@ class _DashboardState extends State<Dashboard> {
     );
   }
 
-  Widget _buildDiagnosisItem(String disease, String date, double width) {
+  Widget _buildDiagnosisItem(String displayLabel, String date, double width, {String? rawDisease, double? confidence}) {
     return InkWell(
       onTap: () {
         // Get the diagnosis details from the database
         DatabaseHelper().getDiagnoses().then((diagnoses) {
           final diagnosis = diagnoses.firstWhere(
-            (d) => d['disease'] == disease && d['date'] == date,
-            orElse: () => {'imagePath': '', 'confidence': null}, // Default empty values if not found
+            (d) => d['disease'] == (rawDisease ?? displayLabel) && d['date'] == date,
+            orElse: () => {'imagePath': '', 'confidence': confidence}, // Use passed confidence as fallback
           );
           
-          // Extract confidence value, defaulting to null if not present
-          final confidence = diagnosis['confidence'] != null 
+          final double? finalConfidence = diagnosis['confidence'] != null 
               ? (diagnosis['confidence'] as num).toDouble() 
-              : null;
+              : confidence;
           
           Navigator.push(
             context,
             MaterialPageRoute(
               builder: (context) => Results(
-                disease: disease,
+                disease: rawDisease ?? displayLabel,
                 date: date,
                 imagePath: diagnosis['imagePath'] ?? '',
-                confidence: confidence,
+                confidence: finalConfidence,
               ),
             ),
           );
@@ -374,7 +326,7 @@ class _DashboardState extends State<Dashboard> {
                 builder: (context, snapshot) {
                   if (!snapshot.hasData) return Container();
                   final diagnosis = snapshot.data!.firstWhere(
-                    (d) => d['disease'] == disease && d['date'] == date,
+                    (d) => d['disease'] == (rawDisease ?? displayLabel) && d['date'] == date,
                     orElse: () => {'imagePath': ''},
                   );
                   
@@ -386,7 +338,7 @@ class _DashboardState extends State<Dashboard> {
                           fit: BoxFit.cover,
                         )
                       : Image.asset(
-                          'assets/images/CommonRust.png',
+                          'Assets/images/Logo.png', // Default to Logo instead of leaf
                           height: width * 0.1,
                           width: width * 0.1,
                           fit: BoxFit.cover,
@@ -400,10 +352,11 @@ class _DashboardState extends State<Dashboard> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   AutoSizeText(
-                    disease,
+                    displayLabel, // Use the categorized label
                     style: TextStyle(
                       fontSize: width * 0.04,
                       fontWeight: FontWeight.bold,
+                      color: Colors.black, // Ensure visibility on white card
                     ),
                     minFontSize: 10,
                     maxLines: 1,
@@ -433,7 +386,7 @@ class _DashboardState extends State<Dashboard> {
         if (index == 1) {
           Navigator.pushReplacement(
             context,
-            MaterialPageRoute(builder: (context) => const Scan()),
+            MaterialPageRoute(builder: (context) => const PatientDetails()),
           );
         } else if (index == 2) {
           Navigator.of(context).push(
@@ -442,7 +395,8 @@ class _DashboardState extends State<Dashboard> {
         }
       },
       elevation: 10,
-      selectedItemColor: const Color.fromARGB(255, 0, 0, 0),
+      backgroundColor: const Color(0xFF001529),
+      selectedItemColor: const Color(0xFF5ED3F2), // Matching the scan button color
       unselectedItemColor: Colors.grey,
       type: BottomNavigationBarType.fixed,
       selectedFontSize: width * 0.025,
@@ -460,7 +414,7 @@ class _DashboardState extends State<Dashboard> {
       String iconName, String label, double width) {
     return BottomNavigationBarItem(
       icon: Image.asset(
-        'assets/images/$iconName.png',
+        'Assets/images/$iconName.png',
         height: width * 0.05,
         width: width * 0.05,
       ),
@@ -472,7 +426,7 @@ class _DashboardState extends State<Dashboard> {
         ),
         padding: EdgeInsets.all(width * 0.02),
         child: Image.asset(
-          'assets/images/$iconName.png',
+          'Assets/images/$iconName.png',
           height: width * 0.05,
           width: width * 0.05,
         ),
