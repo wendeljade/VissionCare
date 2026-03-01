@@ -155,17 +155,16 @@ class _ScanState extends State<Scan> {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              Color(0xFF80ED99),
-              Color(0xFF80ED99),
-              Color(0xFF80ED99),
-              Color(0xFF80ED99),
-              Color(0xFF45DFB1),
-              Color(0xFF45DFB1),
-              Color(0xFF0AD1C8),
-              Color(0xFF0AD1C8),
-              Color(0xFF14919B),
-              Color(0xFF0B6477),
-              Color(0xFF213A57),
+              Color.fromARGB(255, 180, 235, 245), // very light blue
+              Color(0xFFBEE9F7),                  // light sky blue
+              Color(0xFF90DBF4),                  // soft blue
+              Color(0xFF48CAE4),                  // light blue
+              Color(0xFF00B4D8),                  // cyan blue
+              Color(0xFF0096C7),                  // medium blue
+              Color(0xFF0077B6),                  // strong blue
+              Color(0xFF023E8A),                  // deep blue
+              Color(0xFF03045E),                  // dark navy
+              Color(0xFF020024),                  // very dark blue
             ],
           ),
         ),
